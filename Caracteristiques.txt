@@ -1,8 +1,0 @@
-Socios
-Monitores
-Pagos y cobros
-Control de accesos
-Elaboración de planes de entrenamiento
-Gestión de salas
-Elaboración de horarios
-Nóminas
