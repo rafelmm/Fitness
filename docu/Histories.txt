@@ -1,0 +1,10 @@
+Com secretari vull crear, editar, elimiar socis per tenir el control dels socis al sistema.
+Com usuari vull accedir a l'aplicació des de qualsevol lloc per poder veure les meves coses en tot moment.
+Com gestor vull crear, editar, eliminar entrenadors, secretaris i coordinadors per tenir el control dels treballadors.
+Com usuari vull poder veure i modificar les meves dades per tenir l'aplicació actualitzada en tot moment.
+Com entrenador vull crear, editar, eliminar entrenaments de socis per que tots els entrenaments tinguin el mateix foramt y siguin visibles en qualsevol moment.
+Com soci vull poder veure el meu entrenament per saber en tot moment el que he de fer.
+Com soci vull poder comunicar-me amb el meu entrenador per preguntar dubtes.
+Com gestor vull crear, editar, eliminar horaris d'activitats per tenir controlat el funcionament del gimnàs.
+Com usuari vull poder veure i imprimir els horaris de les activitats per saber que s'està fent en tot moment.
+Com gestor vull poder introduir les despeses per tenir un control y poder seguir l'evolució.

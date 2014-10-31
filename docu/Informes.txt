@@ -1,0 +1,9 @@
+Assistencia total interdia, intersemanal, intermensual, interanual.
+Assistencia per activitat.
+Assistencia per entrenador.
+Balanç mensual (ingressos - despeses), Ingressos, Despeses.
+Evolució de número de socis.
+Evolució de número d'entrenadors.
+Hores de cada entrenador.
+Activitats de cada entrenador.
+Salari de cada entrenador.
