@@ -1,5 +1,5 @@
 @echo off
-set "VIRTUAL_ENV=C:\Users\rafel\Documents\Rafel\Fitness\dev"
+set "VIRTUAL_ENV=C:\Users\Rafel\Documents\Fitness\dev"
 
 if not defined PROMPT (
     set "PROMPT=$P$G"

@@ -27,7 +27,7 @@ function global:deactivate ([switch]$NonDestructive) {
 
 deactivate -nondestructive
 
-$env:VIRTUAL_ENV="C:\Users\rafel\Documents\Rafel\Fitness\dev"
+$env:VIRTUAL_ENV="C:\Users\Rafel\Documents\Fitness\dev"
 
 # Set the prompt to include the env name
 # Make sure _OLD_VIRTUAL_PROMPT is global
