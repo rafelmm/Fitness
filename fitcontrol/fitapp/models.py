@@ -2,8 +2,25 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
+# Usuario: Pueden ser de distintos tipos segun al grupo al que pertenece
+#   - Entrenador
+#   - Socio
+#   - Gestor
+#   - Crear usuario:
+#       >>> u = User.objects.create(username='...', password='...', ...)
+#       >>> d = Direccion.objects.create(calle='...', numero='...', ...)
+#       >>> usuario = Usuario.objects.create(user=u, direccion=d, ...)
+
+class Usuario(models.Model):
+    user = models.OneToOneField(User)
+    telefono = models.CharField(max_length=15, blank=True, null=True)
+
+    def __str__(self):
+        return self.user.get_full_name()
+    
 # Dirección: contiene los campos necesarios para guardar la dirección postal
 class Direccion(models.Model):
+    user = models.ForeignKey(User, null=True)
     calle = models.CharField(max_length=150, blank=True, null=True)
     numero = models.CharField(max_length=20, blank=True, null=True)
     piso = models.CharField(max_length=5, blank=True, null=True)
@@ -22,19 +39,3 @@ class Direccion(models.Model):
             camposExtra = '%s%s' % (camposExtra, self.puerta,)
         return '%s %s%s,%s %s' %(self.calle, self.numero, camposExtra, self.cp, self.localidad,)
 
-# Usuario: Pueden ser de distintos tipos segun al grupo al que pertenece
-#   - Entrenador
-#   - Socio
-#   - Gestor
-#   - Crear usuario:
-#       >>> u = User.objects.create(username='...', password='...', ...)
-#       >>> d = Direccion.objects.create(calle='...', numero='...', ...)
-#       >>> usuario = Usuario.objects.create(user=u, direccion=d, ...)
-
-class Usuario(models.Model):
-    user = models.OneToOneField(User)
-    direccion = models.ForeignKey(Direccion)
-    telefono = models.CharField(max_length=15, blank=True, null=True)
-
-    def __str__(self):
-        return self.user.get_full_name()
