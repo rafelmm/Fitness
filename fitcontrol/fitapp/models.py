@@ -4,13 +4,13 @@ from django.contrib.auth.models import User
 # Create your models here.
 # Dirección: contiene los campos necesarios para guardar la dirección postal
 class Direccion(models.Model):
-    calle = models.CharField(max_length=150, blank=True)
-    numero = models.CharField(max_length=20, blank=True)
-    piso = models.CharField(max_length=5, blank=True)
-    puerta = models.CharField(max_length=5, blank=True)
-    escalera = models.CharField(max_length=5, blank=True)
-    localidad = models.CharField(max_length=20, blank=True)
-    cp = models.PositiveIntegerField(null=False)
+    calle = models.CharField(max_length=150, blank=True, null=True)
+    numero = models.CharField(max_length=20, blank=True, null=True)
+    piso = models.CharField(max_length=5, blank=True, null=True)
+    puerta = models.CharField(max_length=5, blank=True, null=True)
+    escalera = models.CharField(max_length=5, blank=True, null=True)
+    localidad = models.CharField(max_length=20, blank=True, null=True)
+    cp = models.PositiveIntegerField(blank=True, null=True)
 
     def __str__(self):
         camposExtra = ''
@@ -29,7 +29,7 @@ class Direccion(models.Model):
 class Usuario(models.Model):
     user = models.OneToOneField(User)
     direccion = models.ForeignKey(Direccion)
-    telefono = models.CharField(max_length=15, blank=True)
+    telefono = models.CharField(max_length=15, blank=True, null=True)
 
     def __str__(self):
         return user.get_full_name()
