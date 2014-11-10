@@ -5,11 +5,17 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 
 # Create your models here.
+class IBAN(models.Model):
+    user = models.OneToOneField(User)
+    entidad = models.PositiveIntegerField(default=0,null=False)
+    oficina = models.PositiveIntegerField(default=0,null=False)
+    dc = models.PositiveIntegerField(defaul=0,null=False)
+    cuenta = models.PositiveIntegerField(default=0,null=False)
+    
 # Usuario: Pueden ser de distintos tipos segun al grupo al que pertenece
 #   - Entrenador
 #   - Socio
 #   - Gestor
-
 class Usuario(models.Model):
     user = models.OneToOneField(User)
     dni = models.CharField(max_length=10, blank=False, null=False, default='00000000A')
