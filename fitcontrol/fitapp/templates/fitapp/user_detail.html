@@ -1,0 +1,16 @@
+<div class="main-container">
+	<div class="usuario-nombre">
+		{{ usuario.user.first_name }} {{ usuario.user.last_name }}
+	</div>
+	<div class="usuario-dni">
+		{{ usuario.dni }}
+	</div>
+	<div class="usuario-direccion-container">
+		Direcciones
+		{% for direccion in usuario.user.direccion_set.all %}
+			<div class="usario-direccion">
+				{{ direccion }}
+			</div>
+		{% endfor %}
+	</div>
+</div>

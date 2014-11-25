@@ -1,16 +1,20 @@
-from django.http import HttpResponse
-from fitapp.models import Direccion
+from django.shortcuts import render, get_object_or_404
+from fitapp.models import Direccion, Usuario
 
 # Create your views here.
 def index(request):
-    return HttpResponse('Hello world, my name is Rafel and this is the first view')
+    return render(request, 'fitapp/index.html', {})
 
 def user_detail(request, user_id):
     
-    return HttpResponse('This is the detail view for user %d' % int(user_id))
+    usuario = get_object_or_404(Usuario, pk=user_id)
+    context = {
+        'usuario':  usuario,
+    }
+    return render(request, 'fitapp/user_detail.html', context)
 
 def address_list(request):
     address_list = Direccion.objects.all()
-    output = ', '.join(a.__str__() for a in address_list)
-    return HttpResponse(output)
+    context = {'address_list': address_list}
+    return render(request, 'fitapp/address_list.html', context)
 
