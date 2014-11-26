@@ -1,0 +1,17 @@
+<div class="main-container">
+	<h1>Actualizar datos de Usuario</h1>
+	<form action="{% url 'fitapp:user_update_action' usuario.id %}" method="post">
+	{% csrf_token %}
+		<div class="usuario-campo">
+			<label for="usuario-nombre">Nombre</label>
+			<input type="text" id="usuario-nombre" name="usuario-nombre" value="{{ usuario.user.first_name }}" />
+			<label for="usuario-apellidos">Apellidos</label>
+			<input type="text" id="usuario-apellidos" name="usuario-apellidos" value="{{ usuario.user.last_name }}"/>
+		</div>
+		<div class="usuario-campo">
+			<label for="usuario-dni">DNI</label>
+			<input type="text" id="usuario-dni" name="usuario-dni" value="{{ usuario.dni }}"/>
+		</div>
+		<input type="submit" value="Grabar"/>
+	</form>
+</div>
