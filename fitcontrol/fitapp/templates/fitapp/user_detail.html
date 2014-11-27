@@ -1,16 +1,30 @@
 <div class="main-container">
 	<h1>Usuario</h1>
+	<a href="{% url 'fitapp:index' %}">Home</a>
 		<div class="usuario-campo">
 			{{ usuario.user.first_name }} {{ usuario.user.last_name }}
 		</div>
 		<div class="usuario-campo">
 			{{ usuario.dni }}
 		</div>
+		<div class="usuario-campo">
+			{{ usuario.telefono }}
+		</div>
+		<div class="usuario-campo">
+			{{ usuario.user.email }}
+		</div>
+		<div class="usuario-campo">
+			{{ usuario.user.username }}
+		</div>
+		<div class="usuario-campo">
+			<input type="checkbox" {% if usuario.es_mayor_de_edad %}checked{% endif %} disabled>Es mayor de edad<br>
+		</div>
+		
 		<div class="usuario-direccion-container">
 			Direcciones
 			{% for direccion in usuario.user.direccion_set.all %}
 				<div class="usario-direccion">
-					{{ direccion }}
+					{{ direccion }} <a href="{% url 'fitapp:address_update' direccion.id %}">Actualizar direccion</a>
 				</div>
 			{% endfor %}
 		</div>

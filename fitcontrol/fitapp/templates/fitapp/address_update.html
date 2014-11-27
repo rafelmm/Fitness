@@ -1,0 +1,39 @@
+<h1>Actualizar Direccion</h1>
+<a href="{% url 'fitapp:index' %}">Home</a>
+<form action="{% url 'fitapp:address_update_action' direccion.id %}" method="post">
+{% csrf_token %}
+	<div class="direccion-campo">
+		<label for="direccion-calle">Calle</label>
+		<input type="text" id="direccion-calle" name="direccion-calle" value="{{ direccion.calle }}" />
+	</div>
+	<div class="direccion-campo">
+		<label for="direccion-numero">Numero</label>
+		<input type="text" id="direccion-numero" name="direccion-numero" value="{{ direccion.numero }}"/>
+	</div>
+	<div class="direccion-campo">
+		<label for="direccion-piso">Piso</label>
+		<input type="text" id="direccion-piso" name="direccion-piso" value="{{ direccion.piso }}"/>
+	</div>
+	<div class="direccion-campo">
+		<label for="direccion-puerta">Puerta</label>
+		<input type="text" id="direccion-puerta" name="direccion-puerta" value="{{ direccion.puerta }}"/>
+	</div>
+    <div class="direccion-campo">
+		<label for="direccion-escalera">Escalera</label>
+		<input type="text" id="direccion-escalera" name="direccion-escalera" value="{{ direccion.escalera }}"/>
+	</div>
+	<div class="direccion-campo">
+		<label for="direccion-localidad">Localidad</label>
+		<input type="text" id="direccion-localidad" name="direccion-localidad" value="{{ direccion.localidad }}"/>
+	</div>
+	<div class="direccion-campo">
+		<label for="direccion-cp">CP</label>
+		<input type="text" id="direccion-cp" name="direccion-cp" value="{{ direccion.cp }}"/>
+	</div>
+	<div class="direccion-campo">
+		<label for="direccion-pais">Pais</label>
+		<input type="text" id="direccion-pais" name="direccion-pais" value="{{ direccion.pais }}"/>
+	</div>
+    
+	<input type="submit" value="Grabar"/>
+</form>

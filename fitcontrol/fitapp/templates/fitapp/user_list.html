@@ -1,0 +1,22 @@
+<h1>Usuarios</h1>
+<a href="{% url 'fitapp:index' %}">Home</a>
+<table width="100%" cellspacing="1" cellpadding="2">
+	<tr>
+		<th>Nombre</th>
+		<th>Apellidos</th>
+		<th>DNI</th>
+		<th>Telefono</th>
+		<th>&nbsp;</th>
+		<th>&nbsp;</th>
+	</tr>
+{% for usuario in user_list %}
+	<tr>
+		<td>{{ usuario.user.first_name }}</td>
+		<td>{{ usuario.user.last_name }}</td>
+		<td>{{ usuario.dni }}</td>
+		<td>{{ usuario.telefono }}</td>
+		<td><a href="{% url 'fitapp:user_detail' usuario.id %}">Ver</a></td>
+		<td><a href="{% url 'fitapp:user_update' usuario.id %}">Actualizar</a></td>
+	</tr>
+{% endfor %}
+</table>
