@@ -34,5 +34,6 @@ class UserAdmin(admin.ModelAdmin):
     dni.short_description = 'DNI'
     dni.admin_order_field = 'telefono'
     
+    
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
