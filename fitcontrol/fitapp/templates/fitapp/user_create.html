@@ -1,0 +1,29 @@
+<h1>Crear nuevo Usuario</h1>
+<a href="{% url 'fitapp:index' %}">Home</a>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<form action="{% url 'fitapp:user_create_action' %}" method="post">
+{% csrf_token %}
+	<div class="usuario-campo">
+		<label for="usuario-username">Nombre de usuario</label>
+		<input type="text" id="usuario-username" name="usuario-username"/>
+	</div>
+	<div class="usuario-campo">
+		<label for="usuario-password">Password</label>
+		<input type="text" id="usuario-password" name="usuario-password"/>
+	</div>
+	<div class="usuario-campo">
+		<label for="usuario-email">Email</label>
+		<input type="text" id="usuario-email" name="usuario-email"/>
+	</div>
+	<div class="usuario-campo">
+		<label for="usuario-nombre">Nombre</label>
+		<input type="text" id="usuario-nombre" name="usuario-nombre" value="{{ usuario.user.first_name }}" />
+		<label for="usuario-apellidos">Apellidos</label>
+		<input type="text" id="usuario-apellidos" name="usuario-apellidos" value="{{ usuario.user.last_name }}"/>
+	</div>
+	<div class="usuario-campo">
+		<label for="usuario-dni">DNI</label>
+		<input type="text" id="usuario-dni" name="usuario-dni" value="{{ usuario.dni }}"/>
+	</div>
+	<input type="submit" value="Grabar"/>
+</form>

@@ -4,6 +4,7 @@ from django.core.urlresolvers import reverse
 from django.views import generic
 
 from fitapp.models import Direccion, Usuario
+from myException import MyException
 
 def IndexView(request):
     return render(request, 'fitapp/index.html')
@@ -20,6 +21,26 @@ class UserDetailView(generic.DetailView):
     model = Usuario
     template_name = 'fitapp/user_detail.html'
 
+def UserCreateView(request):
+    return render(request, 'fitapp/user_create.html')
+    
+def user_create_action(request):
+    username = request.POST['usuario-username']
+    password = request.POST['usuario-password']
+    email = request.POST['usuario-email']
+    nombre = request.POST['usuario-nombre']
+    apellidos = request.POST['usuario-apellidos']
+    dni = request.POST['usuario-dni']
+    try:
+        u = Usuario(username = username, password = password, email = email, nombre = nombre, apellidos = apellidos, dni = dni)
+        u.save()
+    except MyException as e:
+        return render(request, 'fitapp/user_create.html', {
+            'error_message': e,
+        })
+    else:
+        return HttpResponseRedirect(reverse('fitapp:user_detail', args=(u.id,)))
+        
 class UserUpdateView(generic.DetailView):
     model = Usuario
     template_name = 'fitapp/user_update.html'

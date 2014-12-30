@@ -41,7 +41,7 @@ class Usuario(models.Model):
         
         if (self.fecha_nacimiento > timezone.now()):
             error = True
-            errorStr = "%s\r\n%s" % (errorStr,"La fecha de nacimiento no puede ser futura")
+            errorStr = "{0} {1}".format(errorStr, "La fecha de nacimiento no puede ser futura")
         
         self.fecha_nacimiento = fecha_nacimiento
         self.dni = dni
@@ -49,10 +49,19 @@ class Usuario(models.Model):
         
         if (self.dni is not None and not self.validar_dni()):
             error = True
-            errorStr = "%s\r\n%s" % (errorStr,"El DNI no tiene un formato valido")
+            errorStr = "{0} {1}".format(errorStr, "El DNI no tiene un formato valido")
         
         if (error is True):
             raise MyException(errorStr)
+    
+    def save(self, *args, **kwargs): 
+        self.user.save()
+        self.user_id = self.user.id
+        try:
+            models.Model.save(self, *args, **kwargs)
+        except Exception as e:
+            self.user.delete()
+            raise MyException(e)
         
     def __str__(self):
         return self.user.get_full_name()
